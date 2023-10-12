@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Counterfactual Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='results.css') }}">
+</head>
+<body>
+    <h1>Counterfactual Results</h1>
+
+    <h2 class="centered-title">Test Data</h2>
+    <div class="table-container">
+        <table>
+            <tr>
+                {% for col_name in test_data.columns %}
+                    <th>{{ col_name }}</th>
+                {% endfor %}
+            </tr>
+            {% for row in test_data.values %}
+                <tr>
+                    {% for value in row %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <h2 class="centered-title">Counterfactuals List</h2>
+    <div class="table-container">
+        <table>
+            <tr>
+                {% for col_name in cfs_list.columns %}
+                    <th>{{ col_name }}</th>
+                {% endfor %}
+            </tr>
+            {% for row in cfs_list.values %}
+                <tr>
+                    {% for value in row %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <!-- Additional HTML content as needed -->
+</body>
+</html>
