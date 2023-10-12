@@ -14,11 +14,10 @@ h2 {
     overflow-x: auto;
     width: 80%;
     margin: 20px auto;
-    max-height: 300px; /* Adjust max-height as needed */
+    max-height: 300px; 
     border: 1px solid #3498db;
 }
 
-/* Rest of your existing CSS */
 body {
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;

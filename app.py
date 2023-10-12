@@ -55,7 +55,7 @@ def generate_random_counterfactual():
 
 @app.route("/", methods=["GET", "POST"])
 def index():
-    error_message = None  # Initialize an error message variable
+    error_message = None 
     if request.method == "POST":
         try:
             if request.form["submit"] == "Choose Randomly":
@@ -90,7 +90,6 @@ def index():
 
                 return render_template("result.html", counterfactuals=counterfactuals, test_data=test_data, cfs_list=cfs_list)
         except ValueError as e:
-            # Handle the ValueError and store the error message
             error_message = str(e)
             print(e)
     
