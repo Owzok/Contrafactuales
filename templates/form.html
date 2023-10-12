@@ -6,145 +6,141 @@
 </head>
 <body>
     <h1>Counterfactuals Form</h1>
+    <form method="POST">
+        {% if error_message %}
+        <p class="error-message">{{ error_message }}</p>
+        {% endif %}
+        <label for="SEXO">Sexo:</label>
+        <select name="SEXO" id="SEXO">
+            <option value="0">Masculino</option>
+            <option value="1">Femenino</option>
+        </select>
+        <br>
 
-    <div class="grid-container">
-        <div class="left-panel">
-            <label for="SEM_CURSADOS">Semestres Cursados:</label>
-            <div class="slider-container">
-                <input type="range" name="SEM_CURSADOS" id="SEM_CURSADOS" min="1" max="30" step="1">
-                <span id="SEM_CURSADOSValue">15</span>
-            </div>
-            <br>
-    
-            <label for="CREDITOS">Creditos:</label>
-            <div class="slider-container">
-                <input type="range" name="CREDITOS" id="CREDITOS" min="1" max="358" step="1">
-                <span id="CREDITOSValue">200</span>
-            </div>
-            <br>
-    
-            <label for="APROBO">Cursos Aprobados:</label>
-            <div class="slider-container">
-                <input type="range" name="APROBO" id="APROBO" min="1" max="76" step="1">
-                <span id="APROBOValue">35</span>
-            </div>
-            <br>
-    
-            <label for="PONDERADO">Promedio Ponderado:</label>
-            <div class="slider-container">
-                <input type="range" name="PONDERADO" id="PONDERADO" min="1" max="20" step="1">
-                <span id="PonderadoValue">10</span>
-            </div>
-            <br>
-
-            <label for="CRED_X_SEM">Creditos por Semestre:</label>
-            <div class="slider-container">
-                <input type="range" name="CRED_X_SEM" id="CRED_X_SEM" min="2" max="30" step="1">
-                <span id="CRED_X_SEMValue">15</span>
-            </div>
-            <br>
-    
-            <label for="HRS_FALTA_RATIO">Ratio Horas Ausente:</label>
-            <div class="slider-container">
-                <input type="range" name="HRS_FALTA_RATIO" id="HRS_FALTA_RATIO" min="0" max="1" step="0.01">
-                <span id="HRS_FALTA_RATIOValue">0.5%</span>
-            </div>
-            <br>
-    
-            <label for="EDAD">Edad:</label>
-            <div class="slider-container">
-                <input type="range" name="EDAD" id="EDAD" min="11" max="39" step="1">
-                <span id="EDADValue">20</span>
-            </div>
-            <br>
-    
-            <label for="IDH">Indice de Desarrollo Humano:</label>
-            <div class="slider-container">
-                <input type="range" name="IDH" id="IDH" min="0" max="1" step="0.01">
-                <span id="IDHValue">0.5</span>
-            </div>
-            <br>
-            <label for="POR_POBREZA">% Pobreza:</label>
-            <div class="slider-container">
-                <input type="range" name="POR_POBREZA" id="POR_POBREZA" min="0" max="1" step="0.01">
-                <span id="POR_POBREZAValue">0.5</span>
-            </div>
-            <br>
-    
-            <label for="POR_POBREZA_EXTREMA">% Pobreza Extrema:</label>
-            <div class="slider-container">
-                <input type="range" name="POR_POBREZA_EXTREMA" id="POR_POBREZA_EXTREMA" min="0" max="1" step="0.01">
-                <span id="POR_POBREZA_EXTREMAValue">0.5</span>
-            </div>
-            <br>
-    
-            <label for="Tasa_Analfabetismo">Tasa Analfabetismo:</label>
-            <div class="slider-container">
-                <input type="range" name="Tasa_Analfabetismo" id="Tasa_Analfabetismo" min="2" max="12" step="0.01">
-                <span id="Tasa_AnalfabetismoValue">1</span>
-            </div>
-            <br>        
-    
-            <label for="Tasa_Desempleo2019">Tasa Desempleo:</label>
-            <div class="slider-container">
-                <input type="range" name="Tasa_Desempleo2019" id="Tasa_Desempleo2019" min="1" max="6" step="0.01">
-                <span id="Tasa_Desempleo2019Value">1</span>
-            </div>
-            <br>   
+        <label for="SEM_CURSADOS">Semestres Cursados:</label>
+        <div class="slider-container">
+            <input type="range" name="SEM_CURSADOS" id="SEM_CURSADOS" min="1" max="30" step="1">
+            <span id="SEM_CURSADOSValue">15</span>
         </div>
+        <br>
 
-        <div class="right-panel">
-            <form method="POST">
-                {% if error_message %}
-                <p class="error-message">{{ error_message }}</p>
-                {% endif %}
-
-                <label for="SEXO">Sexo:</label>
-                <select name="SEXO" id="SEXO">
-                    <option value="0">Masculino</option>
-                    <option value="1">Femenino</option>
-                </select>
-                <br>
-        
-        
-                <label for="BECA_VIGENTE">Becado:</label>
-                <select name="BECA_VIGENTE" id="BECA_VIGENTE">
-                    <option value="0">No</option>
-                    <option value="1">Si</option>
-                </select>
-                <br>
-        
-                <label for="ESTADO_CIVIL_D">Divorciado:</label>
-                <select name="ESTADO_CIVIL_D" id="ESTADO_CIVIL_D">
-                    <option value="0">No</option>
-                    <option value="1">Divorciado</option>
-                </select>
-                <br>
-        
-                <label for="ESTADO_CIVIL_S">Soltero:</label>
-                <select name="ESTADO_CIVIL_S" id="ESTADO_CIVIL_S">
-                    <option value="0">No</option>
-                    <option value="1">Soltero</option>
-                </select>
-                <br>
-        
-                <label for="FFH">Estudia lejos de su hogar:</label>
-                <select name="FFH" id="FFH">
-                    <option value="0">No</option>
-                    <option value="1">Si</option>
-                </select>
-                <br>
-        
-                <label for="COLEGIO_PRIVADO">Colegio Privado:</label>
-                <select name="COLEGIO_PRIVADO" id="COLEGIO_PRIVADO">
-                    <option value="0">No</option>
-                    <option value="1">Si</option>
-                </select>
-                <br>
-            </form>
+        <label for="CREDITOS">Creditos:</label>
+        <div class="slider-container">
+            <input type="range" name="CREDITOS" id="CREDITOS" min="1" max="358" step="1">
+            <span id="CREDITOSValue">200</span>
         </div>
-    </div>
+        <br>
 
+        <label for="APROBO">Cursos Aprobados:</label>
+        <div class="slider-container">
+            <input type="range" name="APROBO" id="APROBO" min="1" max="76" step="1">
+            <span id="APROBOValue">35</span>
+        </div>
+        <br>
+
+        <label for="PONDERADO">Promedio Ponderado:</label>
+        <div class="slider-container">
+            <input type="range" name="PONDERADO" id="PONDERADO" min="1" max="20" step="1">
+            <span id="PonderadoValue">10</span>
+        </div>
+        <br>
+
+        <label for="BECA_VIGENTE">Becado:</label>
+        <select name="BECA_VIGENTE" id="BECA_VIGENTE">
+            <option value="0">No</option>
+            <option value="1">Si</option>
+        </select>
+        <br>
+
+        <label for="ESTADO_CIVIL_D">Divorciado:</label>
+        <select name="ESTADO_CIVIL_D" id="ESTADO_CIVIL_D">
+            <option value="0">No</option>
+            <option value="1">Divorciado</option>
+        </select>
+        <br>
+
+        <label for="ESTADO_CIVIL_S">Soltero:</label>
+        <select name="ESTADO_CIVIL_S" id="ESTADO_CIVIL_S">
+            <option value="0">No</option>
+            <option value="1">Soltero</option>
+        </select>
+        <br>
+
+        <label for="FFH">Estudia lejos de su hogar:</label>
+        <select name="FFH" id="FFH">
+            <option value="0">No</option>
+            <option value="1">Si</option>
+        </select>
+        <br>
+
+        <label for="COLEGIO_PRIVADO">Colegio Privado:</label>
+        <select name="COLEGIO_PRIVADO" id="COLEGIO_PRIVADO">
+            <option value="0">No</option>
+            <option value="1">Si</option>
+        </select>
+        <br>
+
+        <label for="CRED_X_SEM">Creditos por Semestre:</label>
+        <div class="slider-container">
+            <input type="range" name="CRED_X_SEM" id="CRED_X_SEM" min="2" max="30" step="1">
+            <span id="CRED_X_SEMValue">15</span>
+        </div>
+        <br>
+
+        <label for="HRS_FALTA_RATIO">Ratio Horas Ausente:</label>
+        <div class="slider-container">
+            <input type="range" name="HRS_FALTA_RATIO" id="HRS_FALTA_RATIO" min="0" max="1" step="0.01">
+            <span id="HRS_FALTA_RATIOValue">0.5%</span>
+        </div>
+        <br>
+
+        <label for="EDAD">Edad:</label>
+        <div class="slider-container">
+            <input type="range" name="EDAD" id="EDAD" min="11" max="39" step="1">
+            <span id="EDADValue">20</span>
+        </div>
+        <br>
+
+        <label for="IDH">Indice de Desarrollo Humano:</label>
+        <div class="slider-container">
+            <input type="range" name="IDH" id="IDH" min="0" max="1" step="0.01">
+            <span id="IDHValue">0.5</span>
+        </div>
+        <br>
+
+        <label for="POR_POBREZA">% Pobreza:</label>
+        <div class="slider-container">
+            <input type="range" name="POR_POBREZA" id="POR_POBREZA" min="0" max="1" step="0.01">
+            <span id="POR_POBREZAValue">0.5</span>
+        </div>
+        <br>
+
+        <label for="POR_POBREZA_EXTREMA">% Pobreza Extrema:</label>
+        <div class="slider-container">
+            <input type="range" name="POR_POBREZA_EXTREMA" id="POR_POBREZA_EXTREMA" min="0" max="1" step="0.01">
+            <span id="POR_POBREZA_EXTREMAValue">0.5</span>
+        </div>
+        <br>
+
+        <label for="Tasa_Analfabetismo">Tasa Analfabetismo:</label>
+        <div class="slider-container">
+            <input type="range" name="Tasa_Analfabetismo" id="Tasa_Analfabetismo" min="2" max="12" step="0.01">
+            <span id="Tasa_AnalfabetismoValue">1</span>
+        </div>
+        <br>        
+
+        <label for="Tasa_Desempleo2019">Tasa Desempleo:</label>
+        <div class="slider-container">
+            <input type="range" name="Tasa_Desempleo2019" id="Tasa_Desempleo2019" min="1" max="6" step="0.01">
+            <span id="Tasa_Desempleo2019Value">1</span>
+        </div>
+        <br>   
+
+        <input type="submit" name="submit" value="Generate Counterfactuals">
+        <input type="submit" name="submit" value="Choose Randomly">
+        <div id="error-message" class="error-message"></div> 
+
+    </form>
     <script>
         const rangeInputs = document.querySelectorAll("input[type=range]");
         
