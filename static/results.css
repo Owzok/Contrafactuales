@@ -47,3 +47,8 @@ tr:nth-child(even) {
 .centered-title {
     text-align: center;
 }
+
+.changed-column {
+    background-color: #FFA500;
+    color: #fff; 
+}

@@ -24,13 +24,17 @@
             {% endfor %}
         </table>
     </div>
-
+    
     <h2 class="centered-title">Counterfactuals List</h2>
     <div class="table-container">
         <table>
             <tr>
                 {% for col_name in cfs_list.columns %}
-                    <th>{{ col_name }}</th>
+                    {% if col_name in changed_columns %}
+                        <th class="changed-column">{{ col_name }}</th>
+                    {% else %}
+                        <th>{{ col_name }}</th>
+                    {% endif %}
                 {% endfor %}
             </tr>
             {% for row in cfs_list.values %}
@@ -42,5 +46,24 @@
             {% endfor %}
         </table>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const testDataRow = document.querySelectorAll("tr[data-test-data] td");
+            const counterfactualsRows = document.querySelectorAll("tr[data-counterfactuals-data] td");
+
+            counterfactualsRows.forEach((row, rowIndex) => {
+                const testRow = testDataRow[rowIndex];
+
+                row.style.backgroundColor = "inherit";
+
+                if (testRow.textContent !== row.textContent) {
+                    const columnIndex = row.getAttribute("data-column-index");
+                    testDataRow[columnIndex].style.backgroundColor = "yellow";
+                    row.style.backgroundColor = "yellow";
+                }
+            });
+        });
+    </script>
 </body>
 </html>
