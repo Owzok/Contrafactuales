@@ -10,10 +10,16 @@ h1 {
     margin-top: 20px;
 }
 
-form {
-    background-color: #fff;
-    max-width: 400px;
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 20px;
+    width: 80%;
     margin: 20px auto;
+}
+
+.right-panel, .left-panel {
+    background-color: #fff;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -35,42 +41,6 @@ input[type="text"] {
     border-radius: 3px;
 }
 
-input[type="submit"] {
-    background-color: #007BFF;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-input[type="submit"]:hover {
-    background-color: #0056b3;
-}
-
-input[type="submit"] {
-    background-color: #007BFF;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
-    display: block;
-    margin: 0 auto;
-    margin-top: 20px;
-    width: 50%; /* Center and adjust button width */
-    text-align: center;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); 
-}
-
-input[type="submit"]:hover {
-    background-color: #0056b3;
-    transform: scale(1.05); 
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
-}
-
 .error-message {
     color: red;
     font-weight: bold;
@@ -80,26 +50,4 @@ input[type="submit"]:hover {
     width: 95%;
     display: flex;
     align-items: center;
-}
-
-.slider-container input[type="range"] {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 100%;
-    background: #d3d3d3;
-    height: 5px; 
-    border-radius: 5px; 
-    outline: none;
-    opacity: 0.7;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
-}
-
-.slider-container input[type="range"]:hover {
-    opacity: 1;
-}
-
-.slider-container span {
-    display: inline-block;
-    margin-left: 10px;
 }
