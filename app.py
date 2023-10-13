@@ -5,8 +5,14 @@ import joblib
 import random
 import json
 
-clf = joblib.load("Fixed_model.pkl")
-df = pd.read_csv("Data_limpia2.csv")
+
+Desempleo = pd.read_csv("./Desempleo_2019_2021.csv", sep=";")
+cities = sorted(Desempleo["Departamentos"].tolist())
+
+Analfabetiz = pd.read_csv("./Analfabetismo_2019.csv", sep=";")
+
+clf = joblib.load("./Fixed_model.pkl")
+df = pd.read_csv("./Data_limpia2.csv")
 df.replace({False: 0}, inplace=True)
 df.replace({True: 1}, inplace=True)
 
@@ -90,8 +96,21 @@ def index():
                 input_data["IDH"] = float(request.form["IDH"])
                 input_data["POR_POBREZA"] = float(request.form["POR_POBREZA"])
                 input_data["POR_POBREZA_EXTREMA"] = float(request.form["POR_POBREZA_EXTREMA"])
-                input_data["Tasa_Analfabetismo"] = float(request.form["Tasa_Analfabetismo"])
-                input_data["Tasa_Desempleo2019"] = float(request.form["Tasa_Desempleo2019"])
+                dpto_procedencia = str(request.form["DPTO_PROCEDENCIA"])
+                analfabetismo_query = Analfabetiz[Analfabetiz["Departamento"] == dpto_procedencia]["Tasa"]
+                #input_data["Tasa_Analfabetismo"] = float(request.form["Tasa_Analfabetismo"])
+                input_data["Tasa_Analfabetismo"] = float(analfabetismo_query)
+
+                dpto_residencia = str(request.form["DPTO_RESIDENCIA"])
+                desempleo_query = Desempleo[Desempleo["Departamentos"] == dpto_residencia]["Tasa_2019"]
+                #input_data["Tasa_Desempleo2019"] = float(request.form["Tasa_Desempleo2019"])
+                input_data["Tasa_Desempleo2019"] = float(desempleo_query)
+                
+                if dpto_procedencia != dpto_residencia:
+                    input_data["FFH"] = 1
+                else:
+                    input_data["FFH"] = 0
+
                 #print(input_data)
                 query = pd.DataFrame(input_data, index=[0])
                 counterfactuals = custom_counterfactuals(query)
@@ -109,7 +128,7 @@ def index():
             error_message = str(e)
             print(e)
     
-    return render_template("form.html", error_message=error_message)
+    return render_template("form.html", error_message=error_message, city_opts = cities)
 
 
 if __name__ == "__main__":
